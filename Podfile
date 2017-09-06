@@ -11,11 +11,11 @@ target 'Autobot' do
   pod 'Charts'
   pod 'KRProgressHUD'
   pod 'KRActivityIndicatorView'
-  pod 'NVActivityIndicatorView'
   pod 'AWSCognito'
   pod 'AWSCognitoIdentityProvider'
   pod 'AWSDynamoDB'
   pod 'AWSIoT'
   pod 'AWSLambda'
   pod 'AWSAPIGateway'
+  pod 'NVActivityIndicatorView'
 end
