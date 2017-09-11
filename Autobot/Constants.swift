@@ -9,7 +9,7 @@
 import Foundation
 import AWSCognitoIdentityProvider
 
-let CognitoIdentityUserPoolRegion: AWSRegionType = ".REGION" //(ex: .USEast1)
+let CognitoIdentityUserPoolRegion: AWSRegionType = .Unknown //(ex: .USEast1)
 let CognitoIdentityUserPoolId = "YOUR_USER_POOL_ID"
 let CognitoIdentityUserPoolAppClientId = "YOUR_APP_CLIENT_ID"
 let CognitoIdentityUserPoolAppClientSecret = "YOUR_APP_CLIENT_SECRET"
