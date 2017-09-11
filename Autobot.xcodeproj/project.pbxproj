@@ -10,11 +10,14 @@
 		3643327E1F65A94C00D7C588 /* ImageSets in Resources */ = {isa = PBXBuildFile; fileRef = 3643327D1F65A94C00D7C588 /* ImageSets */; };
 		364332801F661BEC00D7C588 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643327F1F661BEC00D7C588 /* Constants.swift */; };
 		710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C752D1F5FC4AA008DA199 /* AppDelegate.swift */; };
-		710C75301F5FC4AA008DA199 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C752F1F5FC4AA008DA199 /* ViewController.swift */; };
 		710C75331F5FC4AA008DA199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710C75311F5FC4AA008DA199 /* Main.storyboard */; };
 		710C75361F5FC4AA008DA199 /* Autobot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 710C75341F5FC4AA008DA199 /* Autobot.xcdatamodeld */; };
 		710C75381F5FC4AA008DA199 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 710C75371F5FC4AA008DA199 /* Assets.xcassets */; };
 		710C753B1F5FC4AA008DA199 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710C75391F5FC4AA008DA199 /* LaunchScreen.storyboard */; };
+		711664A81F662587004D5B3F /* SingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711664A71F662587004D5B3F /* SingInView.swift */; };
+		711664AA1F66279F004D5B3F /* UserDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711664A91F66279F004D5B3F /* UserDeviceView.swift */; };
+		711664AC1F662E2F004D5B3F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711664AB1F662E2F004D5B3F /* SignUpView.swift */; };
+		711664AE1F6630B7004D5B3F /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711664AD1F6630B7004D5B3F /* ConfirmView.swift */; };
 		8DA7F9CDC38624D32704299B /* Pods_Autobot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38164540E55B4FC9A8F63AF /* Pods_Autobot.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,13 +26,16 @@
 		3643327F1F661BEC00D7C588 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		710C752A1F5FC4AA008DA199 /* Autobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		710C752D1F5FC4AA008DA199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		710C752F1F5FC4AA008DA199 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		710C75321F5FC4AA008DA199 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		710C75351F5FC4AA008DA199 /* Autobot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Autobot.xcdatamodel; sourceTree = "<group>"; };
 		710C75371F5FC4AA008DA199 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		710C753A1F5FC4AA008DA199 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		710C753C1F5FC4AA008DA199 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		710C75431F60541F008DA199 /* Autobot-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Autobot-Bridging-Header.h"; sourceTree = "<group>"; };
+		711664A71F662587004D5B3F /* SingInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingInView.swift; sourceTree = "<group>"; };
+		711664A91F66279F004D5B3F /* UserDeviceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDeviceView.swift; sourceTree = "<group>"; };
+		711664AB1F662E2F004D5B3F /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		711664AD1F6630B7004D5B3F /* ConfirmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		D38164540E55B4FC9A8F63AF /* Pods_Autobot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C86FB6DC4942ED3A3147A4 /* Pods-Autobot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autobot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Autobot/Pods-Autobot.release.xcconfig"; sourceTree = "<group>"; };
 		F6EB1DD1CD5E66BFDDDD4436 /* Pods-Autobot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autobot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Autobot/Pods-Autobot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,8 +84,11 @@
 			children = (
 				710C75431F60541F008DA199 /* Autobot-Bridging-Header.h */,
 				3643327F1F661BEC00D7C588 /* Constants.swift */,
+				711664A71F662587004D5B3F /* SingInView.swift */,
+				711664AB1F662E2F004D5B3F /* SignUpView.swift */,
+				711664AD1F6630B7004D5B3F /* ConfirmView.swift */,
+				711664A91F66279F004D5B3F /* UserDeviceView.swift */,
 				710C752D1F5FC4AA008DA199 /* AppDelegate.swift */,
-				710C752F1F5FC4AA008DA199 /* ViewController.swift */,
 				710C75311F5FC4AA008DA199 /* Main.storyboard */,
 				710C75371F5FC4AA008DA199 /* Assets.xcassets */,
 				710C75391F5FC4AA008DA199 /* LaunchScreen.storyboard */,
@@ -252,9 +261,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711664AA1F66279F004D5B3F /* UserDeviceView.swift in Sources */,
 				710C75361F5FC4AA008DA199 /* Autobot.xcdatamodeld in Sources */,
-				710C75301F5FC4AA008DA199 /* ViewController.swift in Sources */,
 				710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */,
+				711664AE1F6630B7004D5B3F /* ConfirmView.swift in Sources */,
+				711664A81F662587004D5B3F /* SingInView.swift in Sources */,
+				711664AC1F662E2F004D5B3F /* SignUpView.swift in Sources */,
 				364332801F661BEC00D7C588 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

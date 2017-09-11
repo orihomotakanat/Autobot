@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AWSCognitoIdentityProvider
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
