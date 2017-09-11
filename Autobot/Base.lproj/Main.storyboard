@@ -47,8 +47,9 @@
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Sing In"/>
+                                <state key="normal" title="Sign In"/>
                                 <connections>
+                                    <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3sH-kP-IXQ"/>
                                     <segue destination="OKg-rY-v0D" kind="show" id="9cS-GS-1ZV"/>
                                 </connections>
                             </button>
@@ -69,6 +70,10 @@
                         <color key="backgroundColor" red="0.001564681064" green="0.059898532929999998" blue="0.16380020980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Your Account" id="Tb8-HK-txs"/>
+                    <connections>
+                        <outlet property="passWord" destination="Yx5-Zr-f1s" id="Qfw-Kv-i3n"/>
+                        <outlet property="userName" destination="THs-dF-2o0" id="J17-wk-B7z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
