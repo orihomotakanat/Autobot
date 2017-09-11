@@ -20,7 +20,10 @@
 		711664AE1F6630B7004D5B3F /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711664AD1F6630B7004D5B3F /* ConfirmView.swift */; };
 		711664B01F663497004D5B3F /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711664AF1F663497004D5B3F /* ForgotPasswordView.swift */; };
 		711664B21F663B39004D5B3F /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711664B11F663B39004D5B3F /* ResetPasswordView.swift */; };
-		711664B41F663F7E004D5B3F /* RegisteredDeviceSets in Resources */ = {isa = PBXBuildFile; fileRef = 711664B31F663F7E004D5B3F /* RegisteredDeviceSets */; };
+		711664B81F6643A1004D5B3F /* RemoteControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711664B71F6643A1004D5B3F /* RemoteControllerView.swift */; };
+		711664BA1F6643EB004D5B3F /* RoomTemperatureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711664B91F6643EB004D5B3F /* RoomTemperatureInfo.swift */; };
+		711664BC1F664446004D5B3F /* RaspberryPi3Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 711664BB1F664446004D5B3F /* RaspberryPi3Main.storyboard */; };
+		711664BE1F6646CD004D5B3F /* SmallIconSets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 711664BD1F6646CD004D5B3F /* SmallIconSets.xcassets */; };
 		8DA7F9CDC38624D32704299B /* Pods_Autobot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38164540E55B4FC9A8F63AF /* Pods_Autobot.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +44,10 @@
 		711664AD1F6630B7004D5B3F /* ConfirmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		711664AF1F663497004D5B3F /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		711664B11F663B39004D5B3F /* ResetPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
-		711664B31F663F7E004D5B3F /* RegisteredDeviceSets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RegisteredDeviceSets; sourceTree = "<group>"; };
+		711664B71F6643A1004D5B3F /* RemoteControllerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControllerView.swift; sourceTree = "<group>"; };
+		711664B91F6643EB004D5B3F /* RoomTemperatureInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTemperatureInfo.swift; sourceTree = "<group>"; };
+		711664BB1F664446004D5B3F /* RaspberryPi3Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RaspberryPi3Main.storyboard; sourceTree = "<group>"; };
+		711664BD1F6646CD004D5B3F /* SmallIconSets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SmallIconSets.xcassets; sourceTree = "<group>"; };
 		D38164540E55B4FC9A8F63AF /* Pods_Autobot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C86FB6DC4942ED3A3147A4 /* Pods-Autobot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autobot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Autobot/Pods-Autobot.release.xcconfig"; sourceTree = "<group>"; };
 		F6EB1DD1CD5E66BFDDDD4436 /* Pods-Autobot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autobot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Autobot/Pods-Autobot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,10 +108,29 @@
 				710C75391F5FC4AA008DA199 /* LaunchScreen.storyboard */,
 				710C753C1F5FC4AA008DA199 /* Info.plist */,
 				710C75341F5FC4AA008DA199 /* Autobot.xcdatamodeld */,
+				711664B51F66433F004D5B3F /* RegisterdDevices */,
 				3643327D1F65A94C00D7C588 /* ImageSets */,
-				711664B31F663F7E004D5B3F /* RegisteredDeviceSets */,
 			);
 			path = Autobot;
+			sourceTree = "<group>";
+		};
+		711664B51F66433F004D5B3F /* RegisterdDevices */ = {
+			isa = PBXGroup;
+			children = (
+				711664B61F664366004D5B3F /* RespberryPi3 */,
+			);
+			name = RegisterdDevices;
+			sourceTree = "<group>";
+		};
+		711664B61F664366004D5B3F /* RespberryPi3 */ = {
+			isa = PBXGroup;
+			children = (
+				711664BD1F6646CD004D5B3F /* SmallIconSets.xcassets */,
+				711664BB1F664446004D5B3F /* RaspberryPi3Main.storyboard */,
+				711664B71F6643A1004D5B3F /* RemoteControllerView.swift */,
+				711664B91F6643EB004D5B3F /* RoomTemperatureInfo.swift */,
+			);
+			name = RespberryPi3;
 			sourceTree = "<group>";
 		};
 		BF72B8C5AD8E4A79BE0C6FA3 /* Pods */ = {
@@ -180,11 +205,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				711664B41F663F7E004D5B3F /* RegisteredDeviceSets in Resources */,
 				710C753B1F5FC4AA008DA199 /* LaunchScreen.storyboard in Resources */,
 				710C75381F5FC4AA008DA199 /* Assets.xcassets in Resources */,
 				710C75331F5FC4AA008DA199 /* Main.storyboard in Resources */,
 				3643327E1F65A94C00D7C588 /* ImageSets in Resources */,
+				711664BC1F664446004D5B3F /* RaspberryPi3Main.storyboard in Resources */,
+				711664BE1F6646CD004D5B3F /* SmallIconSets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +297,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711664BA1F6643EB004D5B3F /* RoomTemperatureInfo.swift in Sources */,
 				711664AA1F66279F004D5B3F /* UserDeviceView.swift in Sources */,
 				710C75361F5FC4AA008DA199 /* Autobot.xcdatamodeld in Sources */,
+				711664B81F6643A1004D5B3F /* RemoteControllerView.swift in Sources */,
 				711664B01F663497004D5B3F /* ForgotPasswordView.swift in Sources */,
 				711664B21F663B39004D5B3F /* ResetPasswordView.swift in Sources */,
 				710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */,

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Remote Controller View-->
+        <scene sceneID="uep-bI-tjv">
+            <objects>
+                <viewController id="tse-7F-mz4" customClass="RemoteControllerView" customModule="Autobot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GPm-hJ-kUJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="nhw-eh-Van"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L49-d5-oVQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UnY-Yb-OV8">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="biw-TP-j9v">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WgE-Lg-q7a">
+                                <rect key="frame" x="279" y="-18" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="TemperatureGraph"/>
+                            </button>
+                            <connections>
+                                <segue destination="EFy-Ym-8Q4" kind="presentation" id="h0A-x6-zIx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HtP-CR-P4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="-125"/>
+        </scene>
+        <!--Room Temperature Info-->
+        <scene sceneID="oRD-6P-CbZ">
+            <objects>
+                <viewController id="EFy-Ym-8Q4" customClass="RoomTemperatureInfo" customModule="Autobot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oss-vc-bj6"/>
+                        <viewControllerLayoutGuide type="bottom" id="eoe-jn-igZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="da6-PF-0MB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LXt-ZT-Ucc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="-125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="euX-u0-U4G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WG1-sI-BNF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="j00-nU-QvB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tse-7F-mz4" kind="relationship" relationship="rootViewController" id="xcz-5l-x5d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3dg-j0-13I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-769" y="-125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="TemperatureGraph" width="25" height="25"/>
+    </resources>
+</document>
