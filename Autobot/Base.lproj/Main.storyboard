@@ -157,12 +157,19 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="PHo-9M-Inf" kind="show" id="cIE-Zb-aGZ"/>
+                                    <action selector="signUp:" destination="OKg-rY-v0D" eventType="touchUpInside" id="PCx-jo-1Wh"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.001564681064" green="0.059898532929999998" blue="0.16380020980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="vgl-V2-sAb" id="4tZ-e0-xE9"/>
+                        <outlet property="passWord" destination="P87-7b-kL4" id="HoB-2b-FOx"/>
+                        <outlet property="phone" destination="feY-mQ-ssR" id="OWl-bR-AIE"/>
+                        <outlet property="userName" destination="wBW-AT-7Qg" id="sG2-qX-dWj"/>
+                        <segue destination="PHo-9M-Inf" kind="show" id="ffE-t3-N5G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uP8-QC-Gtk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
