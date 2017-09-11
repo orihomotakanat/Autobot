@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import AWSCognitoIdentityProvider
 
 class UserDeviceView: UITableViewController {
+    
+    var response: AWSCognitoIdentityUserGetDetailsResponse?
+    var user: AWSCognitoIdentityUser?
+    var pool: AWSCognitoIdentityUserPool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +41,11 @@ class UserDeviceView: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
+
+    //Userのサインアウト
+    @IBAction func signOut(_ sender: Any) {
+    }
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

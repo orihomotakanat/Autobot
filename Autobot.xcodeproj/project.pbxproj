@@ -97,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				710C75431F60541F008DA199 /* Autobot-Bridging-Header.h */,
+				710C752D1F5FC4AA008DA199 /* AppDelegate.swift */,
 				3643327F1F661BEC00D7C588 /* Constants.swift */,
 				711664A71F662587004D5B3F /* SingInView.swift */,
 				711664AB1F662E2F004D5B3F /* SignUpView.swift */,
@@ -104,7 +105,6 @@
 				711664AF1F663497004D5B3F /* ForgotPasswordView.swift */,
 				711664B11F663B39004D5B3F /* ResetPasswordView.swift */,
 				711664A91F66279F004D5B3F /* UserDeviceView.swift */,
-				710C752D1F5FC4AA008DA199 /* AppDelegate.swift */,
 				710C75311F5FC4AA008DA199 /* Main.storyboard */,
 				710C75371F5FC4AA008DA199 /* Assets.xcassets */,
 				710C75391F5FC4AA008DA199 /* LaunchScreen.storyboard */,
