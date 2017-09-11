@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3643327E1F65A94C00D7C588 /* ImageSets in Resources */ = {isa = PBXBuildFile; fileRef = 3643327D1F65A94C00D7C588 /* ImageSets */; };
+		364332801F661BEC00D7C588 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643327F1F661BEC00D7C588 /* Constants.swift */; };
 		710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C752D1F5FC4AA008DA199 /* AppDelegate.swift */; };
 		710C75301F5FC4AA008DA199 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C752F1F5FC4AA008DA199 /* ViewController.swift */; };
 		710C75331F5FC4AA008DA199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710C75311F5FC4AA008DA199 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		3643327D1F65A94C00D7C588 /* ImageSets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ImageSets; sourceTree = "<group>"; };
+		3643327F1F661BEC00D7C588 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		710C752A1F5FC4AA008DA199 /* Autobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		710C752D1F5FC4AA008DA199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		710C752F1F5FC4AA008DA199 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				710C75431F60541F008DA199 /* Autobot-Bridging-Header.h */,
+				3643327F1F661BEC00D7C588 /* Constants.swift */,
 				710C752D1F5FC4AA008DA199 /* AppDelegate.swift */,
 				710C752F1F5FC4AA008DA199 /* ViewController.swift */,
 				710C75311F5FC4AA008DA199 /* Main.storyboard */,
@@ -252,6 +255,7 @@
 				710C75361F5FC4AA008DA199 /* Autobot.xcdatamodeld in Sources */,
 				710C75301F5FC4AA008DA199 /* ViewController.swift in Sources */,
 				710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */,
+				364332801F661BEC00D7C588 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
