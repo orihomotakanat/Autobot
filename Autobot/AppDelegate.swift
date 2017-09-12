@@ -50,8 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // fetch the user pool client we initialized in above step
         let pool = AWSCognitoIdentityUserPool(forKey: AWSCognitoUserPoolsSignInProviderKey)
         self.storyboard = UIStoryboard(name: "Main", bundle: nil)
-        pool.delegate = self as! AWSCognitoIdentityInteractiveAuthenticationDelegate
-        
+        pool.delegate = self
         
         return true
     }
@@ -77,11 +76,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
+        //self.saveContext()
     }
 
     // MARK: - Core Data stack
-
+    /*
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -124,8 +123,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+     */
 }
+
+
+// MARK:- AWSCognitoIdentityInteractiveAuthenticationDelegate protocol delegate
+extension AppDelegate: AWSCognitoIdentityInteractiveAuthenticationDelegate {
+    
+    func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
+        if (self.navigationController == nil) {
+            self.navigationController = self.storyboard?.instantiateViewController(withIdentifier: "signinController") as? UINavigationController
+        }
+        
+        if (self.signInView == nil) {
+            self.signInView = self.navigationController?.viewControllers[0] as? SingInView
+        }
+        
+        DispatchQueue.main.async {
+            self.navigationController!.popToRootViewController(animated: true)
+            if (!self.navigationController!.isViewLoaded
+                || self.navigationController!.view.window == nil) {
+                self.window?.rootViewController?.present(self.navigationController!,
+                                                         animated: true,
+                                                         completion: nil)
+            }
+            
+        }
+        return self.signInView!
+    }
+    
+    /* //今回はMFAデバイス認証をせってしないのでこの部分はなし
+    func startMultiFactorAuthentication() -> AWSCognitoIdentityMultiFactorAuthentication {
+        if (self.mfaViewController == nil) {
+            self.mfaViewController = MFAViewController()
+            self.mfaViewController?.modalPresentationStyle = .popover
+        }
+        DispatchQueue.main.async {
+            if (!self.mfaViewController!.isViewLoaded
+                || self.mfaViewController!.view.window == nil) {
+                //display mfa as popover on current view controller
+                let viewController = self.window?.rootViewController!
+                viewController?.present(self.mfaViewController!,
+                                        animated: true,
+                                        completion: nil)
+                
+                // configure popover vc
+                let presentationController = self.mfaViewController!.popoverPresentationController
+                presentationController?.permittedArrowDirections = UIPopoverArrowDirection.left
+                presentationController?.sourceView = viewController!.view
+                presentationController?.sourceRect = viewController!.view.bounds
+            }
+        }
+        return self.mfaViewController!
+    }
+    */
+    func startRememberDevice() -> AWSCognitoIdentityRememberDevice {
+        return self
+    }
+}
+
+
+
 
 
 // MARK:- AWSCognitoIdentityRememberDevice protocol delegate
@@ -169,6 +227,5 @@ extension AppDelegate: AWSCognitoIdentityRememberDevice {
         }
     }
 }
-
 
 
