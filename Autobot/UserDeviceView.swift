@@ -23,7 +23,28 @@ class UserDeviceView: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.tableView.delegate = self
+        self.pool = AWSCognitoIdentityUserPool(forKey: AWSCognitoUserPoolsSignInProviderKey)
+        if (self.user == nil) {
+            self.user = self.pool?.currentUser()
+        }
+        self.refresh()
+        
     }
+    
+    /*
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setToolbarHidden(true, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setToolbarHidden(false, animated: true)
+    }
+    */
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,19 +55,53 @@ class UserDeviceView: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 5
     }
 
+    //返すcellの数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if let response = self.response  {
+            return response.userAttributes!.count
+        }
         return 0
-    }
-
-    //Userのサインアウト
-    @IBAction func signOut(_ sender: Any) {
     }
     
 
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "deviceCells", for: indexPath) //deviceCells = Main.storyboardのdevice表示部
+     
+     // Configure the cell...
+        let userAttribute = self.response?.userAttributes![indexPath.row]
+        cell.textLabel!.text = userAttribute?.name
+        cell.detailTextLabel!.text = userAttribute?.value
+
+
+     return cell
+     }
+
+    
+
+    //Userのサインアウト
+    @IBAction func signOut(_ sender: Any) {
+        self.user?.signOut()
+        self.title = nil
+        self.response = nil
+        self.tableView.reloadData()
+        self.refresh()
+    }
+    
+    func refresh() {
+        self.user?.getDetails().continueOnSuccessWith { (task) -> AnyObject? in
+            DispatchQueue.main.async(execute: {
+                self.response = task.result
+                self.title = self.user?.username
+                self.tableView.reloadData()
+            })
+            return nil
+        }
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
