@@ -24,6 +24,17 @@ class SignUpView: UIViewController {
         self.pool = AWSCognitoIdentityUserPool.init(forKey: AWSCognitoUserPoolsSignInProviderKey) //今回FacebookやAmazonのproviderは設定してないのでここは特になし
     }
     
+    //Keyboard close
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //Keyboardを閉じる
+        userName.resignFirstResponder()
+        passWord.resignFirstResponder()
+        
+        return true
+    }
+    
+    
     /* //特に必要ないので省略
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)

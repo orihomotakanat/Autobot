@@ -22,6 +22,20 @@ class ForgotPasswordView: UIViewController {
         self.pool = AWSCognitoIdentityUserPool(forKey: AWSCognitoUserPoolsSignInProviderKey) //今回はFacebookやAmazonのプロバイダは使用していないのでここは特に関係なし
     }
     
+    //Keyboard close
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //Keyboardを閉じる
+        userName.resignFirstResponder()
+        
+        return true
+    }
+    
+    //Back to SignInView
+    @IBAction func backToSignInView(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)

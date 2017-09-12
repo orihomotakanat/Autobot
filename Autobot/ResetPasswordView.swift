@@ -22,6 +22,17 @@ class ResetPasswordView: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    //Keyboard close
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //Keyboardを閉じる
+        confirmationcode.resignFirstResponder( )
+        proposedPassword.resignFirstResponder()
+        
+        return true
+    }
+    
 
     //Reset password
     @IBAction func updatePassword(_ sender: Any) {

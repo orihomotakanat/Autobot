@@ -37,6 +37,16 @@ class SingInView: UIViewController {
     } //@IBAction func siginInPressed end
     
     
+    //Keyboard close
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //Keyboardを閉じる
+        userName.resignFirstResponder()
+        passWord.resignFirstResponder()
+        
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

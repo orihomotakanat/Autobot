@@ -24,6 +24,18 @@ class ConfirmView: UIViewController {
         self.userName.text = self.user!.username
         self.sentToLabel.text = "Code sent to: \(self.sentTo!)"
     }
+    
+    //Keyboard close
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //Keyboardを閉じる
+        userName.resignFirstResponder()
+        confirmCode.resignFirstResponder()
+        
+        return true
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
