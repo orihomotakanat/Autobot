@@ -9,7 +9,7 @@
 import UIKit
 import AWSCognitoIdentityProvider
 
-class SignUpView: UIViewController {
+class SignUpView: UIViewController, UITextFieldDelegate {
 
     var pool: AWSCognitoIdentityUserPool?
     var sentTo: String?
@@ -22,15 +22,18 @@ class SignUpView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pool = AWSCognitoIdentityUserPool.init(forKey: AWSCognitoUserPoolsSignInProviderKey) //今回FacebookやAmazonのproviderは設定してないのでここは特になし
+        userName.delegate = self
+        passWord.delegate = self
+        phone.delegate = self
+        email.delegate = self
     }
     
     //Keyboard close
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        //Keyboardを閉じる
         userName.resignFirstResponder()
         passWord.resignFirstResponder()
-        
+        phone.resignFirstResponder()
+        email.resignFirstResponder()
         return true
     }
     
@@ -114,16 +117,7 @@ class SignUpView: UIViewController {
         
     } //@IBAction func signUp end
     
-    /* //Keyboard close
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        //Keyboardを閉じる
-        queryStringParameters.resignFirstResponder( )
-        methodPath.resignFirstResponder()
-        
-        return true
-    }
-    */
+
 
     /*
     // MARK: - Navigation

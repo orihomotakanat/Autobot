@@ -9,7 +9,7 @@
 import UIKit
 import AWSCognitoIdentityProvider
 
-class ResetPasswordView: UIViewController {
+class ResetPasswordView: UIViewController, UITextFieldDelegate {
     
     var user: AWSCognitoIdentityUser?
     
@@ -21,18 +21,24 @@ class ResetPasswordView: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        confirmationcode.delegate = self
+        proposedPassword.delegate = self
     }
     
     //Keyboard close
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        //Keyboardを閉じる
         confirmationcode.resignFirstResponder( )
         proposedPassword.resignFirstResponder()
         
         return true
     }
     
+    //Back to forgotPWView
+    /*
+    @IBAction func backToResetPW(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    */
 
     //Reset password
     @IBAction func updatePassword(_ sender: Any) {
@@ -60,7 +66,8 @@ class ResetPasswordView: UIViewController {
                     
                     self?.present(alertController, animated: true, completion:  nil)
                 } else {
-                    let _ = strongSelf.navigationController?.popToRootViewController(animated: true)
+                    //let _ = strongSelf.navigationController?.popToRootViewController(animated: true)
+                    let _ = strongSelf.performSegue(withIdentifier: "signInView", sender:sender)
                 }
             })
             return nil

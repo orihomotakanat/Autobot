@@ -9,7 +9,7 @@
 import UIKit
 import AWSCognitoIdentityProvider
 
-class SingInView: UIViewController {
+class SingInView: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var passWord: UITextField!
@@ -20,6 +20,7 @@ class SingInView: UIViewController {
         super.viewWillAppear(animated)
         self.userName.text = userNameText //Username
         self.passWord.text = nil //Password
+        
     }
     
     //When pushing "Sign In"
@@ -39,17 +40,16 @@ class SingInView: UIViewController {
     
     //Keyboard close
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        //Keyboardを閉じる
         userName.resignFirstResponder()
         passWord.resignFirstResponder()
-        
+
         return true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userName.delegate = self //For Keyboard Return
+        passWord.delegate = self //For Keyboard Return
         // Do any additional setup after loading the view.
     }
 

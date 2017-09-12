@@ -9,7 +9,7 @@
 import UIKit
 import AWSCognitoIdentityProvider
 
-class ForgotPasswordView: UIViewController {
+class ForgotPasswordView: UIViewController, UITextFieldDelegate{
     
     var pool: AWSCognitoIdentityUserPool?
     var user: AWSCognitoIdentityUser?
@@ -20,12 +20,12 @@ class ForgotPasswordView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pool = AWSCognitoIdentityUserPool(forKey: AWSCognitoUserPoolsSignInProviderKey) //今回はFacebookやAmazonのプロバイダは使用していないのでここは特に関係なし
+        
+        userName.delegate = self
     }
     
     //Keyboard close
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        //Keyboardを閉じる
         userName.resignFirstResponder()
         
         return true

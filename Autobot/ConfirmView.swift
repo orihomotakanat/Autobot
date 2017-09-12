@@ -9,7 +9,7 @@
 import UIKit
 import AWSCognitoIdentityProvider
 
-class ConfirmView: UIViewController {
+class ConfirmView: UIViewController, UITextFieldDelegate {
     
     var sentTo: String?
     var user: AWSCognitoIdentityUser?
@@ -23,12 +23,13 @@ class ConfirmView: UIViewController {
         super.viewDidLoad()
         self.userName.text = self.user!.username
         self.sentToLabel.text = "Code sent to: \(self.sentTo!)"
+        
+        userName.delegate = self
+        confirmCode.delegate = self
     }
     
     //Keyboard close
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        //Keyboardを閉じる
         userName.resignFirstResponder()
         confirmCode.resignFirstResponder()
         

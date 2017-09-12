@@ -43,7 +43,7 @@ class UserDeviceView: UITableViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(false, animated: true)
     }
-    */
+     */
     
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +55,7 @@ class UserDeviceView: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 5
+        return 1 //1以外にするとその数分繰り返される
     }
 
     //返すcellの数
@@ -73,15 +73,13 @@ class UserDeviceView: UITableViewController {
      
      // Configure the cell...
         let userAttribute = self.response?.userAttributes![indexPath.row]
-        cell.textLabel!.text = userAttribute?.name
-        cell.detailTextLabel!.text = userAttribute?.value
+        cell.textLabel!.text = userAttribute?.name //TableViewCellをLeft Detailにしている場合のtitle
+        cell.detailTextLabel!.text = userAttribute?.value  //TableViewCellをLeft Detailにしている場合のSubtitle
 
-
-     return cell
+        return cell
      }
 
     
-
     //Userのサインアウト
     @IBAction func signOut(_ sender: Any) {
         self.user?.signOut()
