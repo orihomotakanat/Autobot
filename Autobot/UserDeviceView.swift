@@ -35,9 +35,9 @@ class UserDeviceView: UITableViewController {
         
         //<Tentative>Device cell
         var iotDevice = iotDevices.init(
-                roomName: NSLocalizedString("tomtan-Myroom", comment: "Your room name"),
+                roomName: NSLocalizedString("tomtanMyroom", comment: "Your room name"),
                 device: NSLocalizedString("RaspberryPi-3rd", comment: "Your device"),
-                icon: "deviceIcon", storyboard: "raspberryPi3"
+                icon: "deviceIcon", storyboard: "RaspberryPi3Main"
         )
         
         registeredDevices.append(iotDevice)
@@ -46,7 +46,7 @@ class UserDeviceView: UITableViewController {
         iotDevice = iotDevices.init(
             roomName: NSLocalizedString("LivingRoom", comment: "Your room name"),
             device: NSLocalizedString("RaspberryPi-3rd", comment: "Your device"),
-            icon: "deviceIcon", storyboard: "raspberryPi3"
+            icon: "deviceIcon", storyboard: "tvRemote"
         )
         
         //registeredDevices.append(iotDevice)
@@ -88,11 +88,15 @@ class UserDeviceView: UITableViewController {
          */
         return registeredDevices.count
     }
-    
 
+    //RegisterCell
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "deviceCells", for: indexPath) //deviceCells = Main.storyboardのdevice表示部
-     
+        let registerDevice = registeredDevices[indexPath.row]
+        cell.imageView!.image = UIImage(named: registerDevice.icon)
+        cell.textLabel!.text = registerDevice.roomName
+        cell.detailTextLabel!.text = registerDevice.device
+
      // Configure the cell...
         /* CognitoPoolIdの各UserData
         let userAttribute = self.response?.userAttributes![indexPath.row]
@@ -101,6 +105,15 @@ class UserDeviceView: UITableViewController {
          */
         return cell
      }
+    
+    //Move to specified segue
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let registerDevice = registeredDevices[indexPath.row]
+        let storyboard = UIStoryboard(name: registerDevice.storyboard, bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: registerDevice.storyboard)
+        self.navigationController!.pushViewController(viewController, animated: true)
+    }
 
     
     //Userのサインアウト
@@ -123,15 +136,6 @@ class UserDeviceView: UITableViewController {
         }
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // Override to support conditional editing of the table view.

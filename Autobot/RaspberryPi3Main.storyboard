@@ -12,20 +12,15 @@
         <!--Remote Controller View-->
         <scene sceneID="uep-bI-tjv">
             <objects>
-                <viewController id="tse-7F-mz4" customClass="RemoteControllerView" customModule="Autobot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RaspberryPi3Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tse-7F-mz4" customClass="RemoteControllerView" customModule="Autobot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GPm-hJ-kUJ"/>
                         <viewControllerLayoutGuide type="bottom" id="nhw-eh-Van"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="L49-d5-oVQ">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="RaspberryPi3Main" id="L49-d5-oVQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcy-K8-ehe">
-                                <rect key="frame" x="91" y="315" width="232" height="107"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ReserveButton.png"/>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACL-ZT-lws" customClass="TimerView" customModule="Autobot" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="414" height="211"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -40,15 +35,27 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.058823529411764705" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jU-ba-Izu">
-                                <rect key="frame" x="284" y="449" width="110" height="110"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEQ-0d-mvt">
+                                <rect key="frame" x="353" y="20" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="TurnOn.png"/>
+                                <state key="normal" title="temp">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="EFy-Ym-8Q4" kind="show" id="j92-Np-FKi"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qc-sA-aZA">
-                                <rect key="frame" x="20" y="449" width="110" height="110"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MA3-oc-clC">
+                                <rect key="frame" x="15" y="20" width="47" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="TurnOff.png"/>
+                                <state key="normal" title="Device">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c81-be-oi3">
+                                <rect key="frame" x="33" y="349" width="348" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ReserveButton.png"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,9 +76,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="TemperatureGraph"/>
                             </button>
-                            <connections>
-                                <segue destination="EFy-Ym-8Q4" kind="presentation" id="h0A-x6-zIx"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -90,36 +94,16 @@
                     <view key="view" contentMode="scaleToFill" id="da6-PF-0MB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.001564681064" green="0.059898532929999998" blue="0.16380020980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LXt-ZT-Ucc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="830" y="-125"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="euX-u0-U4G">
-            <objects>
-                <navigationController storyboardIdentifier="raspberryPi3" automaticallyAdjustsScrollViewInsets="NO" id="WG1-sI-BNF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="j00-nU-QvB">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="tse-7F-mz4" kind="relationship" relationship="rootViewController" id="xcz-5l-x5d"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3dg-j0-13I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-769" y="-125"/>
-        </scene>
     </scenes>
     <resources>
         <image name="ReserveButton.png" width="294" height="140"/>
         <image name="TemperatureGraph" width="25" height="25"/>
-        <image name="TurnOff.png" width="140" height="140"/>
-        <image name="TurnOn.png" width="140" height="140"/>
     </resources>
 </document>
