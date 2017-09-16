@@ -10,6 +10,7 @@
 		3643327E1F65A94C00D7C588 /* ImageSets in Resources */ = {isa = PBXBuildFile; fileRef = 3643327D1F65A94C00D7C588 /* ImageSets */; };
 		364332801F661BEC00D7C588 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643327F1F661BEC00D7C588 /* Constants.swift */; };
 		3684CD881F6CB8E7005315BE /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */; };
+		3684CD8A1F6CBB31005315BE /* iotDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684CD891F6CBB31005315BE /* iotDevices.swift */; };
 		710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C752D1F5FC4AA008DA199 /* AppDelegate.swift */; };
 		710C75331F5FC4AA008DA199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710C75311F5FC4AA008DA199 /* Main.storyboard */; };
 		710C75361F5FC4AA008DA199 /* Autobot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 710C75341F5FC4AA008DA199 /* Autobot.xcdatamodeld */; };
@@ -33,6 +34,7 @@
 		3643327D1F65A94C00D7C588 /* ImageSets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ImageSets; sourceTree = "<group>"; };
 		3643327F1F661BEC00D7C588 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
+		3684CD891F6CBB31005315BE /* iotDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iotDevices.swift; sourceTree = "<group>"; };
 		710C752A1F5FC4AA008DA199 /* Autobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		710C752D1F5FC4AA008DA199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		710C75321F5FC4AA008DA199 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		710C752C1F5FC4AA008DA199 /* Autobot */ = {
 			isa = PBXGroup;
 			children = (
+				3684CD891F6CBB31005315BE /* iotDevices.swift */,
 				710C75431F60541F008DA199 /* Autobot-Bridging-Header.h */,
 				710C752D1F5FC4AA008DA199 /* AppDelegate.swift */,
 				3643327F1F661BEC00D7C588 /* Constants.swift */,
@@ -311,6 +314,7 @@
 				3684CD881F6CB8E7005315BE /* AddDeviceViewController.swift in Sources */,
 				711664B21F663B39004D5B3F /* ResetPasswordView.swift in Sources */,
 				711664C01F665969004D5B3F /* TimerView.swift in Sources */,
+				3684CD8A1F6CBB31005315BE /* iotDevices.swift in Sources */,
 				710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */,
 				711664AE1F6630B7004D5B3F /* ConfirmView.swift in Sources */,
 				711664A81F662587004D5B3F /* SingInView.swift in Sources */,

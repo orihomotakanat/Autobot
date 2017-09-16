@@ -14,6 +14,8 @@ class UserDeviceView: UITableViewController {
     var response: AWSCognitoIdentityUserGetDetailsResponse?
     var user: AWSCognitoIdentityUser?
     var pool: AWSCognitoIdentityUserPool?
+    
+    var iotDevices: [iotDevices] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,8 @@ class UserDeviceView: UITableViewController {
         }
         self.refresh()
         
+        //<Tentative>Device cell
+        //var deviceCell
     }
     
     /*
