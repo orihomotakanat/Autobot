@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SwiftyJSON
+import AWSIoT
+import AWSCore
 
 class RoomTemperatureInfo: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +30,7 @@ class RoomTemperatureInfo: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     @IBAction func backToRemoteControllerView(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

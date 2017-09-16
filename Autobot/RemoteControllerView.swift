@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftyJSON
+import AWSIoT
+import AWSCore
 
 class RemoteControllerView: UIViewController {
     //TapticEngine
@@ -16,23 +19,38 @@ class RemoteControllerView: UIViewController {
     //Timer
     @IBOutlet var reservedTimerPicker: UIDatePicker!
     
+    //AWSIoT
+    var iotDataManager: AWSIoTDataManager!
+    let thingName = room
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //Preparation of tapticEngine
         tapticGenerator.prepare()
         tapticNotficationGenerator.prepare() //tapticEngine for timer
-        
-        
+                
         // Do any additional setup after loading the view.
         reservedTimerPicker.setValue(UIColor.white, forKey: "textColor")
         reservedTimerPicker.backgroundColor = #colorLiteral(red: 0.001564681064, green: 0.05989853293, blue: 0.1638002098, alpha: 1)
     }
-
+    /*
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        iotDataManager = AWSIoTDataManager.default()
+        iotDataManager.connectUsingWebSocket(withClientId: UUID().uuidString, cleanSession: true, statusCallback: mqttEventCallback)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        iotDataManager = AWSIoTDataManager.default()
+    }
+     */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     
     //TurnningOn
@@ -63,6 +81,40 @@ class RemoteControllerView: UIViewController {
         tapticGenerator.impactOccurred()
     }
     
+    //MQTT callback
+    func mqttEventCallback( _ status: AWSIoTMQTTStatus ) {
+        DispatchQueue.main.async {
+            print("connection status = \(status.rawValue)")
+            switch(status)
+            {
+            case .connecting:
+                print( "Connecting..." )
+                
+            case .connected:
+                print( "Connected" )
+                //
+                // Register the device shadows once connected.
+                //
+                
+                self.iotDataManager.getShadow(self.thingName)
+                
+            case .disconnected:
+                print( "Disconnected" )
+                
+            case .connectionRefused:
+                print( "Connection Refused" )
+                
+            case .connectionError:
+                print( "Connection Error" )
+                
+            case .protocolError:
+                print( "Protocol Error" )
+                
+            default:
+                print("unknown state: \(status.rawValue)")
+            }
+        }
+    }
     
     
     //Back to UserDeviceView.swift

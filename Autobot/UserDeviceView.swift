@@ -35,8 +35,8 @@ class UserDeviceView: UITableViewController {
         
         //<Tentative>Device cell
         var iotDevice = iotDevices.init(
-                roomName: NSLocalizedString("tomtan-MyRoom", comment: "Your room name"),
-                device: NSLocalizedString("RaspberryPi-3rd", comment: "Your device"),
+                roomName: NSLocalizedString(room, comment: "Your room name"),
+                device: NSLocalizedString(controller, comment: "Your device"),
                 icon: "deviceIcon", storyboard: "RaspberryPi3Main"
         )
         

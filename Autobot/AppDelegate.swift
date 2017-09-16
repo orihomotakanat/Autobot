@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import AWSCognitoIdentityProvider
+import AWSIoT
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

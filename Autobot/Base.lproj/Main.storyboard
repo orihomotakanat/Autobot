@@ -398,21 +398,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="roomName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yGl-BX-53A">
-                                            <rect key="frame" x="95" y="27.333333333333329" width="107.33333333333333" height="24"/>
+                                            <rect key="frame" x="125" y="27.333333333333329" width="107.33333333333333" height="24"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZdD-ap-TY4">
-                                            <rect key="frame" x="95" y="55" width="37.333333333333336" height="14.333333333333334"/>
+                                            <rect key="frame" x="124.99999999999999" y="55" width="37.333333333333336" height="14.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="deviceIcon" id="9sT-ee-ftH">
-                                            <rect key="frame" x="20" y="19" width="60" height="60"/>
+                                            <rect key="frame" x="20" y="4" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -501,7 +501,7 @@
     </scenes>
     <resources>
         <image name="UserLoginIcon" width="253" height="253"/>
-        <image name="deviceIcon" width="60" height="60"/>
+        <image name="deviceIcon" width="90" height="90"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0xY-hf-PAC"/>
