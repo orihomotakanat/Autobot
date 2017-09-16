@@ -382,38 +382,42 @@
         <scene sceneID="ePs-mw-vL0">
             <objects>
                 <tableViewController storyboardIdentifier="attributesView" id="ynR-W5-yBW" customClass="UserDeviceView" customModule="Autobot" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" id="f9m-F3-bBq">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorInsetReference="fromAutomaticInsets" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" id="f9m-F3-bBq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.001564681064" green="0.059898532929999998" blue="0.16380020980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" red="0.001564681064" green="0.059898532929999998" blue="0.16380020980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deviceCells" textLabel="yGl-BX-53A" detailTextLabel="ZdD-ap-TY4" imageView="9sT-ee-ftH" rowHeight="81" style="IBUITableViewCellStyleSubtitle" id="B7p-2o-UQh">
-                                <rect key="frame" x="0.0" y="28" width="414" height="81"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deviceCells" textLabel="yGl-BX-53A" detailTextLabel="ZdD-ap-TY4" imageView="9sT-ee-ftH" rowHeight="99" style="IBUITableViewCellStyleSubtitle" id="B7p-2o-UQh">
+                                <rect key="frame" x="0.0" y="28" width="414" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B7p-2o-UQh" id="O3Y-BY-Gg2">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="98.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="roomName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yGl-BX-53A">
-                                            <rect key="frame" x="95" y="21" width="84.666666666666671" height="20.333333333333332"/>
+                                            <rect key="frame" x="95" y="27.333333333333329" width="107.33333333333333" height="24"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZdD-ap-TY4">
-                                            <rect key="frame" x="95" y="44.333333333333329" width="37.333333333333336" height="14.333333333333334"/>
+                                            <rect key="frame" x="95" y="55" width="37.333333333333336" height="14.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="deviceIcon" id="9sT-ee-ftH">
-                                            <rect key="frame" x="20" y="10" width="60" height="60"/>
+                                            <rect key="frame" x="20" y="19" width="60" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.001564681064" green="0.059898532929999998" blue="0.16380020980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

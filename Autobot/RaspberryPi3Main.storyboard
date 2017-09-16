@@ -21,20 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACL-ZT-lws" customClass="TimerView" customModule="Autobot" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="58" width="414" height="292"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tMH-hB-hAB">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="292"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="526801344.46246803">
-                                            <!--2017-09-11 05:42:24 +0000-->
-                                        </date>
-                                    </datePicker>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.058823529411764705" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEQ-0d-mvt">
                                 <rect key="frame" x="358" y="20" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -53,16 +39,25 @@
                                 <state key="selected" title="select">
                                     <color key="titleShadowColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="pushedReserve:" destination="tse-7F-mz4" eventType="touchUpInside" id="aSj-J6-M6J"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmu-0y-dyP">
                                 <rect key="frame" x="289" y="577" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="TurnOnButton"/>
+                                <connections>
+                                    <action selector="pushedOn:" destination="tse-7F-mz4" eventType="touchUpInside" id="R75-7l-V2z"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ij-qF-Gyz">
                                 <rect key="frame" x="20" y="577" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="TurnOffButton"/>
+                                <connections>
+                                    <action selector="pushedOff:" destination="tse-7F-mz4" eventType="touchUpInside" id="jTi-eb-eHw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MA3-oc-clC">
                                 <rect key="frame" x="20" y="20" width="47" height="30"/>
@@ -74,6 +69,13 @@
                                     <action selector="backToUserDeviceView:" destination="tse-7F-mz4" eventType="touchUpInside" id="3in-ix-9o2"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ktg-Ne-6aj">
+                                <rect key="frame" x="0.0" y="58" width="414" height="305"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="527240588.54000199">
+                                    <!--2017-09-16 07:43:08 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -95,6 +97,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="reservedTimerPicker" destination="Ktg-Ne-6aj" id="Qpg-Yl-0td"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtP-CR-P4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -35,7 +35,7 @@ class UserDeviceView: UITableViewController {
         
         //<Tentative>Device cell
         var iotDevice = iotDevices.init(
-                roomName: NSLocalizedString("tomtanMyroom", comment: "Your room name"),
+                roomName: NSLocalizedString("tomtan-MyRoom", comment: "Your room name"),
                 device: NSLocalizedString("RaspberryPi-3rd", comment: "Your device"),
                 icon: "deviceIcon", storyboard: "RaspberryPi3Main"
         )
@@ -57,12 +57,13 @@ class UserDeviceView: UITableViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
+    */
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setToolbarHidden(false, animated: true)
+        //self.navigationController?.setToolbarHidden(false, animated: true)
+        self.tableView.tableFooterView = UIView()
     }
-     */
     
 
     override func didReceiveMemoryWarning() {
