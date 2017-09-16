@@ -15,7 +15,7 @@ class UserDeviceView: UITableViewController {
     var user: AWSCognitoIdentityUser?
     var pool: AWSCognitoIdentityUserPool?
     
-    var iotDevices: [iotDevices] = []
+    var registeredDevices: [iotDevices] = [] //From iotDevices.swift, iotDevices[roomName, device, icon, storyboard]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,22 @@ class UserDeviceView: UITableViewController {
         self.refresh()
         
         //<Tentative>Device cell
-        //var deviceCell
+        var iotDevice = iotDevices.init(
+                roomName: NSLocalizedString("tomtan-Myroom", comment: "Your room name"),
+                device: NSLocalizedString("RaspberryPi-3rd", comment: "Your device"),
+                icon: "deviceIcon", storyboard: "raspberryPi3"
+        )
+        
+        registeredDevices.append(iotDevice)
+        
+        //以下他のデバイス用
+        iotDevice = iotDevices.init(
+            roomName: NSLocalizedString("LivingRoom", comment: "Your room name"),
+            device: NSLocalizedString("RaspberryPi-3rd", comment: "Your device"),
+            icon: "deviceIcon", storyboard: "raspberryPi3"
+        )
+        
+        //registeredDevices.append(iotDevice)
     }
     
     /*
@@ -65,10 +80,13 @@ class UserDeviceView: UITableViewController {
     //返すcellの数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        /* CognitoPoolIdのUserData数
         if let response = self.response  {
             return response.userAttributes!.count
         }
         return 0
+         */
+        return registeredDevices.count
     }
     
 
@@ -76,10 +94,11 @@ class UserDeviceView: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "deviceCells", for: indexPath) //deviceCells = Main.storyboardのdevice表示部
      
      // Configure the cell...
+        /* CognitoPoolIdの各UserData
         let userAttribute = self.response?.userAttributes![indexPath.row]
         cell.textLabel!.text = userAttribute?.name //TableViewCellをLeft Detailにしている場合のtitle
         cell.detailTextLabel!.text = userAttribute?.value  //TableViewCellをLeft Detailにしている場合のSubtitle
-
+         */
         return cell
      }
 

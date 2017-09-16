@@ -10,14 +10,14 @@ import Foundation
 
 class iotDevices: NSObject {
     
-    var displayName: String
-    var detailText: String
+    var roomName: String
+    var device: String
     var icon: String
     var storyboard: String
     
-    init(dispName: String, detail: String, icon: String, storyboard: String) {
-        self.displayName = dispName
-        self.detailText = detail
+    init(roomName: String, device: String, icon: String, storyboard: String) {
+        self.roomName = roomName
+        self.device = device
         self.icon = icon
         self.storyboard = storyboard
         super.init()
