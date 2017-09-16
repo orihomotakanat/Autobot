@@ -112,7 +112,7 @@ class UserDeviceView: UITableViewController {
         let registerDevice = registeredDevices[indexPath.row]
         let storyboard = UIStoryboard(name: registerDevice.storyboard, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: registerDevice.storyboard)
-        self.navigationController!.pushViewController(viewController, animated: true)
+        self.navigationController!.present(viewController, animated: true)
     }
 
     

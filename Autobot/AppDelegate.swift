@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        sleep(1)
         // Override point for customization after application launch.
         if (CognitoIdentityUserPoolId == "YOUR_USER_POOL_ID") {
             let alertController = UIAlertController(title: "Invalid Configuration",
