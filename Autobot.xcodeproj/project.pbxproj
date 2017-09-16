@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3643327E1F65A94C00D7C588 /* ImageSets in Resources */ = {isa = PBXBuildFile; fileRef = 3643327D1F65A94C00D7C588 /* ImageSets */; };
 		364332801F661BEC00D7C588 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643327F1F661BEC00D7C588 /* Constants.swift */; };
+		3684CD881F6CB8E7005315BE /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */; };
 		710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C752D1F5FC4AA008DA199 /* AppDelegate.swift */; };
 		710C75331F5FC4AA008DA199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710C75311F5FC4AA008DA199 /* Main.storyboard */; };
 		710C75361F5FC4AA008DA199 /* Autobot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 710C75341F5FC4AA008DA199 /* Autobot.xcdatamodeld */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		3643327D1F65A94C00D7C588 /* ImageSets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ImageSets; sourceTree = "<group>"; };
 		3643327F1F661BEC00D7C588 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
 		710C752A1F5FC4AA008DA199 /* Autobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		710C752D1F5FC4AA008DA199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		710C75321F5FC4AA008DA199 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				711664AF1F663497004D5B3F /* ForgotPasswordView.swift */,
 				711664B11F663B39004D5B3F /* ResetPasswordView.swift */,
 				711664A91F66279F004D5B3F /* UserDeviceView.swift */,
+				3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */,
 				710C75311F5FC4AA008DA199 /* Main.storyboard */,
 				710C75371F5FC4AA008DA199 /* Assets.xcassets */,
 				710C75391F5FC4AA008DA199 /* LaunchScreen.storyboard */,
@@ -305,6 +308,7 @@
 				710C75361F5FC4AA008DA199 /* Autobot.xcdatamodeld in Sources */,
 				711664B81F6643A1004D5B3F /* RemoteControllerView.swift in Sources */,
 				711664B01F663497004D5B3F /* ForgotPasswordView.swift in Sources */,
+				3684CD881F6CB8E7005315BE /* AddDeviceViewController.swift in Sources */,
 				711664B21F663B39004D5B3F /* ResetPasswordView.swift in Sources */,
 				711664C01F665969004D5B3F /* TimerView.swift in Sources */,
 				710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */,
