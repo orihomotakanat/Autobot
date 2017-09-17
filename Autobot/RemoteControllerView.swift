@@ -34,7 +34,7 @@ class RemoteControllerView: UIViewController {
         reservedTimerPicker.setValue(UIColor.white, forKey: "textColor")
         reservedTimerPicker.backgroundColor = #colorLiteral(red: 0.001564681064, green: 0.05989853293, blue: 0.1638002098, alpha: 1)
     }
-    /*
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         iotDataManager = AWSIoTDataManager.default()
@@ -45,7 +45,7 @@ class RemoteControllerView: UIViewController {
         super.viewWillDisappear(animated)
         iotDataManager = AWSIoTDataManager.default()
     }
-     */
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
