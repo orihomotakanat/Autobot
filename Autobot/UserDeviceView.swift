@@ -80,12 +80,23 @@ class UserDeviceView: UITableViewController {
         //self.navigationController?.setToolbarHidden(false, animated: true)
         self.tableView.tableFooterView = UIView()
         
-        invokeDynamo()
+        //invokeDynamo()
+        if self.needsToRefresh {
+            self.refreshList(true)
+            self.needsToRefresh = false
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
+        needsToRefresh = true
+        self.refreshList(true)
     }
     
     
     //DynamoDB ** sampleMEMOS **
+    /*
     func invokeDynamo() {
         let dynamoDB = AWSDynamoDB.default()
         let listTableInput = AWSDynamoDBListTablesInput()
@@ -104,8 +115,8 @@ class UserDeviceView: UITableViewController {
             return nil
         }
     }
+     */
 
-    
     //DynamoDB get userdata from "Userinformation" table
     func setupTable() {
         //See if the test table exists.

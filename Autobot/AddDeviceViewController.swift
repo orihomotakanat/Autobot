@@ -8,11 +8,17 @@
 
 import UIKit
 import AWSDynamoDB
+import AWSCognitoIdentityProvider
 
 class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var roomName: UITextField!
     @IBOutlet var deviceSelectPicker: UIPickerView!
+    
+    //cognitoCredentials
+    var response: AWSCognitoIdentityUserGetDetailsResponse?
+    var user: AWSCognitoIdentityUser?
+    var pool: AWSCognitoIdentityUserPool?
     
     let pickerViewList: Array = ["RaspberryPi3"] //deviceの機種
     //let controlPickerList: Array = ["Air conditionar"] //aircon, TVremote

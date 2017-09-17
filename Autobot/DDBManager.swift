@@ -9,7 +9,7 @@
 import Foundation
 import AWSDynamoDB
 
-let UserDDBTableName = "UserInformation" //username, device, roomname
+let UserDDBTableName = "UserInfoData" //username, device, roomname
 
 class DDBDynamoDBManger : NSObject {
     class func describeTable() -> AWSTask<AnyObject> {
@@ -28,10 +28,10 @@ class DDBDynamoDBManger : NSObject {
 class DDBTableRow :AWSDynamoDBObjectModel ,AWSDynamoDBModeling  {
     
     var username: String?
-    var device: String?
+    var roomname: String?
     
     //set the default values of scores, wins and losses to 0
-    var roomname: String?
+    var device: String?
     var method: String?
 
     
@@ -48,7 +48,7 @@ class DDBTableRow :AWSDynamoDBObjectModel ,AWSDynamoDBModeling  {
     }
     
     class func rangeKeyAttribute() -> String {
-        return "device"
+        return "roomname"
     }
     
     class func ignoreAttributes() -> [String] {
