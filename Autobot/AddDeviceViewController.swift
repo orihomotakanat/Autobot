@@ -12,14 +12,18 @@ class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     @IBOutlet weak var roomName: UITextField!
     @IBOutlet var deviceSelectPicker: UIPickerView!
+    
     let pickerViewList: Array = ["RaspberryPi3"] //deviceの機種
+    //let controlPickerList: Array = ["Air conditionar"] //aircon, TVremote
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        // - deviceSelectPicker
         deviceSelectPicker.setValue(UIColor.white, forKey: "textColor")
+        deviceSelectPicker.backgroundColor = #colorLiteral(red: 0.001564681064, green: 0.05989853293, blue: 0.1638002098, alpha: 1)
         deviceSelectPicker.delegate = self
         deviceSelectPicker.dataSource = self
         self.view.addSubview(deviceSelectPicker)
