@@ -8,6 +8,7 @@
 
 import UIKit
 import AWSCognitoIdentityProvider
+import AWSDynamoDB
 
 class UserDeviceView: UITableViewController {
     

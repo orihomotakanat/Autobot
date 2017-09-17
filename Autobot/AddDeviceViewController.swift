@@ -8,12 +8,23 @@
 
 import UIKit
 
-class AddDeviceViewController: UIViewController {
+class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
+    @IBOutlet weak var roomName: UITextField!
+    @IBOutlet var deviceSelectPicker: UIPickerView!
+    let pickerViewList: Array = ["RaspberryPi3"] //deviceの機種
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        deviceSelectPicker.setValue(UIColor.white, forKey: "textColor")
+        deviceSelectPicker.delegate = self
+        deviceSelectPicker.dataSource = self
+        self.view.addSubview(deviceSelectPicker)
+        
+        roomName.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +32,34 @@ class AddDeviceViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //PickeViewrに表示する列数
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    //PickerViewに表示する行数
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerViewList.count
+    }
+    
+    //PickerViewに表示するデータ(delegateMethod)
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerViewList[row]
+    }
 
+    //pickerが選択された際に呼ばれる(delegateMethod) ForDebug
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("row: \(row)")
+        print("value: \(pickerViewList[row])")
+    }
+    
+    //Keyboard close
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        roomName.resignFirstResponder()
+        return true
+    }
+
+    
     /*
     // MARK: - Navigation
 
