@@ -411,7 +411,7 @@
                                             <color key="textColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="deviceIcon" id="9sT-ee-ftH">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="aircon" id="9sT-ee-ftH">
                                             <rect key="frame" x="20" y="4" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -553,7 +553,7 @@
     </scenes>
     <resources>
         <image name="UserLoginIcon" width="253" height="253"/>
-        <image name="deviceIcon" width="90" height="90"/>
+        <image name="aircon" width="90" height="90"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0xY-hf-PAC"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSDynamoDB
 
 class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 

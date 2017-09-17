@@ -16,6 +16,14 @@ class UserDeviceView: UITableViewController {
     var user: AWSCognitoIdentityUser?
     var pool: AWSCognitoIdentityUserPool?
     
+    //DynamoDBvariables
+    var tableRows: Array<DDBTableRow>?
+    var lock: NSLock?
+    var lastEvaluatedKey:[String : AWSDynamoDBAttributeValue]!
+    var doneLoading = false
+    
+    var needsToRefresh = false //cellのrefresh
+    
     var registeredDevices: [iotDevices] = [] //From iotDevices.swift, iotDevices[roomName, device, icon, storyboard]
 
     override func viewDidLoad() {
@@ -32,9 +40,15 @@ class UserDeviceView: UITableViewController {
         if (self.user == nil) {
             self.user = self.pool?.currentUser()
         }
+        
         self.refresh()
         
+        tableRows = []
+        lock = NSLock()
+        self.setupTable()
+        
         //<Tentative>Device cell
+        /*
         var iotDevice = iotDevices.init(
                 roomName: NSLocalizedString(room, comment: "Your room name"),
                 device: NSLocalizedString(controller, comment: "Your device"),
@@ -51,6 +65,7 @@ class UserDeviceView: UITableViewController {
         )
         
         //registeredDevices.append(iotDevice)
+         */
     }
     
     /*
@@ -64,7 +79,86 @@ class UserDeviceView: UITableViewController {
         super.viewWillAppear(animated)
         //self.navigationController?.setToolbarHidden(false, animated: true)
         self.tableView.tableFooterView = UIView()
+        
+        invokeDynamo()
+        
     }
+    
+    
+    //DynamoDB ** sampleMEMOS **
+    func invokeDynamo() {
+        let dynamoDB = AWSDynamoDB.default()
+        let listTableInput = AWSDynamoDBListTablesInput()
+        dynamoDB.listTables(listTableInput!).continueWith{ (task: AWSTask?) -> AnyObject? in
+            if let error = task!.error {
+                print("Error occurred: \(error)")
+                return nil
+            }
+            
+            let listTablesOutput = task!.result
+            
+            for tableName in (listTablesOutput?.tableNames!)! {
+                print("\(tableName)")
+            }
+            
+            return nil
+        }
+    }
+
+    
+    //DynamoDB get userdata from "Userinformation" table
+    func setupTable() {
+        //See if the test table exists.
+        DDBDynamoDBManger.describeTable().continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
+            //load table contents
+            self.refreshList(true)
+            return nil
+        })
+    }
+    
+    func refreshList(_ startFromBeginning: Bool)  {
+        if (self.lock?.try() != nil) {
+            if startFromBeginning {
+                self.lastEvaluatedKey = nil;
+                self.doneLoading = false
+            }
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
+            let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
+            let queryExpression = AWSDynamoDBScanExpression()
+            queryExpression.exclusiveStartKey = self.lastEvaluatedKey
+            queryExpression.limit = 20
+            dynamoDBObjectMapper.scan(DDBTableRow.self, expression: queryExpression).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
+                
+                if self.lastEvaluatedKey == nil {
+                    self.tableRows?.removeAll(keepingCapacity: true)
+                }
+                
+                if let paginatedOutput = task.result {
+                    for item in paginatedOutput.items as! [DDBTableRow] {
+                        if item.username == (self.user?.username)! { //CognitoLoginよりusername抜き出し
+                            self.tableRows?.append(item)
+                        }
+                    }
+                    
+                    self.lastEvaluatedKey = paginatedOutput.lastEvaluatedKey
+                    if paginatedOutput.lastEvaluatedKey == nil {
+                        self.doneLoading = true
+                    }
+                }
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.tableView.reloadData()
+                
+                if let error = task.error as NSError? {
+                    print("Error: \(error)")
+                }
+                
+                return nil
+            })
+        }
+    } //func refreshList end
     
 
     override func didReceiveMemoryWarning() {
@@ -88,16 +182,36 @@ class UserDeviceView: UITableViewController {
         }
         return 0
          */
-        return registeredDevices.count
+        //return registeredDevices.count //tentative registeredDevice Cells
+        if let rowCount = self.tableRows?.count {
+            return rowCount
+        } else {
+            return 0
+        }
     }
 
     //RegisterCell
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "deviceCells", for: indexPath) //deviceCells = Main.storyboardのdevice表示部
-        let registerDevice = registeredDevices[indexPath.row]
-        cell.imageView!.image = UIImage(named: registerDevice.icon)
-        cell.textLabel!.text = registerDevice.roomName
-        cell.detailTextLabel!.text = registerDevice.device
+        //let registerDevice = registeredDevices[indexPath.row]
+        
+        //cell.textLabel!.text = registerDevice.roomName
+        //cell.detailTextLabel!.text = registerDevice.device
+        
+        //DDBCells
+        if let myTableRows = self.tableRows {
+            let item = myTableRows[indexPath.row]
+            cell.textLabel?.text = item.roomname
+            cell.imageView!.image = UIImage(named: item.method!)
+            if let myDetailTextLabel = cell.detailTextLabel {
+                myDetailTextLabel.text = item.device
+            }
+            
+            if indexPath.row == myTableRows.count - 1 && !self.doneLoading {
+                self.refreshList(false)
+            }
+        }
+        
 
      // Configure the cell...
         /* CognitoPoolIdの各UserData
@@ -111,10 +225,14 @@ class UserDeviceView: UITableViewController {
     //Move to specified segue
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let registerDevice = registeredDevices[indexPath.row]
-        let storyboard = UIStoryboard(name: registerDevice.storyboard, bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: registerDevice.storyboard)
+        //let registerDevice = registeredDevices[indexPath.row]
+        if let myTableRows = self.tableRows {
+            let item = myTableRows[indexPath.row]
+            print(item.method!)
+            let storyboard = UIStoryboard(name: item.method!, bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: item.method!)
         self.navigationController!.present(viewController, animated: true)
+        }
     }
 
     
