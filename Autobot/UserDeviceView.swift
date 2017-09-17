@@ -171,6 +171,29 @@ class UserDeviceView: UITableViewController {
         }
     } //func refreshList end
     
+    //delete DDB table
+    func deleteTableRow(_ row: DDBTableRow) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
+        dynamoDBObjectMapper.remove(row).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if let error = task.error as NSError? {
+                print("Error: \(error)")
+                
+                let alertController = UIAlertController(title: "Failed to delete a row.", message: error.description, preferredStyle: UIAlertControllerStyle.alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+            
+            return nil
+        })
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -268,25 +291,31 @@ class UserDeviceView: UITableViewController {
     }
     
 
-    /*
+    // - 以下EditingStyle -> Slideでdelete
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
+
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
+            if var myTableRows = self.tableRows {
+                let item = myTableRows[indexPath.row]
+                self.deleteTableRow(item)
+                myTableRows.remove(at: indexPath.row)
+                self.tableRows = myTableRows
+            
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        } //else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        //}
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.

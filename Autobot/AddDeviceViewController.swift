@@ -93,7 +93,6 @@ class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         })
     }
     
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
