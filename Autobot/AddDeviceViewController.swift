@@ -13,7 +13,10 @@ import AWSCognitoIdentityProvider
 class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var roomName: UITextField!
+    @IBOutlet weak var uuid: UITextField!
+    
     @IBOutlet var deviceSelectPicker: UIPickerView!
+    
     
     //cognitoCredentials for inserting to DynamoDB
     var response: AWSCognitoIdentityUserGetDetailsResponse?
@@ -46,6 +49,7 @@ class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.view.addSubview(deviceSelectPicker)
         
         roomName.delegate = self
+        uuid.delegate = self
     }
     
     //Save device setting to DDB
@@ -53,6 +57,7 @@ class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let tableRow = DDBTableRow()
         tableRow?.username = (self.user?.username)!
         tableRow?.roomname = self.roomName.text
+        tableRow?.uuid = self.uuid.text
         tableRow?.device = pickerViewList[0]
         tableRow?.method = temporaryMethod
         if (self.roomName.text!.utf16.count > 0) {
@@ -123,6 +128,7 @@ class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     //Keyboard close
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         roomName.resignFirstResponder()
+        uuid.resignFirstResponder()
         return true
     }
 

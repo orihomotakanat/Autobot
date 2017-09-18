@@ -31,8 +31,10 @@ class DDBTableRow :AWSDynamoDBObjectModel ,AWSDynamoDBModeling  {
     var roomname: String?
     
     //set the default values of scores, wins and losses to 0
+    var uuid: String?
     var device: String?
     var method: String?
+    
 
     
     //should be ignored according to ignoreAttributes
