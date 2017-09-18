@@ -90,6 +90,7 @@ class AddDeviceViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 self.present(alertController, animated: true, completion: nil)
                 
                 self.roomName.text = nil
+                self.uuid.text = nil
 
                 //self.dataChanged = true //Update機能は後に
             }

@@ -22,7 +22,7 @@ class ConfirmView: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userName.text = self.user!.username
-        self.sentToLabel.text = "Code sent to: \(self.sentTo!)"
+        self.sentToLabel.text = "To: \(self.sentTo!)"
         
         userName.delegate = self
         confirmCode.delegate = self

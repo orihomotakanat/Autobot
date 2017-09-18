@@ -263,7 +263,8 @@ class UserDeviceView: UITableViewController {
             print(item.method!)
             let storyboard = UIStoryboard(name: item.method!, bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: item.method!)
-        self.navigationController!.present(viewController, animated: true)
+            print(item.uuid!)
+            self.navigationController!.present(viewController, animated: true)
         }
     }
 
