@@ -27,12 +27,15 @@ public class AUTOBOTLambdaMicroserviceClient: AWSAPIGatewayClient {
         let serviceInfo = AWSInfo.default().defaultServiceInfo(AWSInfoClientKey)
         if let serviceInfo = serviceInfo {
             serviceConfiguration = AWSServiceConfiguration(region: serviceInfo.region, credentialsProvider: serviceInfo.cognitoCredentialsProvider)
+            print("OK")
         } else if (AWSServiceManager.default().defaultServiceConfiguration != nil) {
             serviceConfiguration = AWSServiceManager.default().defaultServiceConfiguration
+            print("serviceConfig-default is nil")
         } else {
             serviceConfiguration = AWSServiceConfiguration(region: .Unknown, credentialsProvider: nil)
+            print("serviceConfig region is unknown")
         }
-        
+
         return AUTOBOTLambdaMicroserviceClient(configuration: serviceConfiguration!)
 	}()
 
@@ -148,7 +151,7 @@ public class AUTOBOTLambdaMicroserviceClient: AWSAPIGatewayClient {
         let endPoint = AWSEndpoint(region: configuration.regionType, service: .APIGateway, url: URL(string: URLString))
         //self.configuration.endpoint = AWSEndpoint(region: configuration.regionType, service: .APIGateway, url: URL(string: URLString)) //Defaultだとこの設定だが、このままだと"get-only"の表示が出てBuildFailedになるので上記のように編集(参考: https://github.com/aws/aws-sdk-ios/issues/628 )
 	    let signer: AWSSignatureV4Signer = AWSSignatureV4Signer(credentialsProvider: configuration.credentialsProvider, endpoint: endPoint) //self.configuration.endpoint) //Defaultの設定
-	    if let endpoint = self.configuration.endpoint {
+	    if let endpoint = endPoint {
 	    	self.configuration.baseURL = endpoint.url
 	    }
 	    self.configuration.requestInterceptors = [AWSNetworkingRequestInterceptor(), signer]

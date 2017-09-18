@@ -14,18 +14,43 @@ import AWSAPIGateway
 
 class RoomTemperatureInfo: UIViewController {
     
+    //APIGateway settings
+    //let serviceClient = AUTOBOTLambdaMicroserviceClient.client(forKey: "AUTOBOTLambdaMicroserviceClient")
     let serviceClient = AUTOBOTLambdaMicroserviceClient.default()
+    
+    //APIGateway - variables
+    let headerParameters = [
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    ]
+    var queryParameters = [String: String]()
+    let toLambdaPath = "/GetDataOfDDB" //APIGateway method path
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print(serviceClient)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //Show temperature history graph
+        queryParameters.updateValue("IoTDeviceData", forKey: "TableName") //DynamoDB TableData
+        let apiRequest = AWSAPIGatewayRequest(httpMethod: "GET", urlString: toLambdaPath, queryParameters: queryParameters, headerParameters: headerParameters, httpBody: nil)
+        
+        serviceClient.invoke(apiRequest).continueWith(block: {[weak self](task: AWSTask) -> AnyObject? in
+            guard self != nil else { return nil }
+            
+            let result: AWSAPIGatewayResponse! = task.result
+            //For debug
+            let responseString = String(data: result.responseData!, encoding: String.Encoding.utf8)
+            print(responseString!)
+            print(result.statusCode)
+            
+            return nil
+        })
     }
 
     override func didReceiveMemoryWarning() {

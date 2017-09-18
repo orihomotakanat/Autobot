@@ -59,10 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //AWSIoTCredentialsWithCognitoID
         let credentialProvider = AWSCognitoCredentialsProvider(regionType: AwsRegion, identityPoolId: CognitoIdentityPoolId)
         let configuration = AWSServiceConfiguration(region: AwsRegion, credentialsProvider: credentialProvider)
-        //AUTOBOTLambdaMicroserviceClient.registerClient(withConfiguration: configuration!, forKey: "USWest2AUTOBOTLambdaMicroserviceClient")
-        AWSServiceManager.default().defaultServiceConfiguration = configuration
-        
         //APIGatewayCredentialWithCognitoID
+        AUTOBOTLambdaMicroserviceClient.registerClient(withConfiguration: configuration!, forKey: "AUTOBOTLambdaMicroserviceClient")
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
         
         
         
