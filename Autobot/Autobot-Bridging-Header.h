@@ -11,6 +11,7 @@
 
 #import "AWSCore.h"
 #import "AWSAPIGateway.h"
+#import "AWSApiGatewayBridge.h"
 #import "AWSCognito.h"
 #import "AWSCognitoIdentityProvider.h"
 #import "AWSCognito.h"

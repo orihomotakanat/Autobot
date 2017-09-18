@@ -145,8 +145,9 @@ public class AUTOBOTLambdaMicroserviceClient: AWSAPIGatewayClient {
 	    if URLString.hasSuffix("/") {
 	        URLString = URLString.substring(to: URLString.index(before: URLString.endIndex))
 	    }
-	    self.configuration.endpoint == AWSEndpoint(region: configuration.regionType, service: .APIGateway, url: URL(string: URLString))
-	    let signer: AWSSignatureV4Signer = AWSSignatureV4Signer(credentialsProvider: configuration.credentialsProvider, endpoint: self.configuration.endpoint)
+        let endPoint = AWSEndpoint(region: configuration.regionType, service: .APIGateway, url: URL(string: URLString))
+        //self.configuration.endpoint = AWSEndpoint(region: configuration.regionType, service: .APIGateway, url: URL(string: URLString)) //Defaultだとこの設定だが、このままだと"get-only"の表示が出てBuildFailedになるので上記のように編集(参考: https://github.com/aws/aws-sdk-ios/issues/628 )
+	    let signer: AWSSignatureV4Signer = AWSSignatureV4Signer(credentialsProvider: configuration.credentialsProvider, endpoint: endPoint) //self.configuration.endpoint) //Defaultの設定
 	    if let endpoint = self.configuration.endpoint {
 	    	self.configuration.baseURL = endpoint.url
 	    }
@@ -155,3 +156,4 @@ public class AUTOBOTLambdaMicroserviceClient: AWSAPIGatewayClient {
 
 
 }
+

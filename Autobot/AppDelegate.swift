@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // setup logging
-        AWSLogger.default().logLevel = .verbose
+        //AWSLogger.default().logLevel = .verbose
+        AWSDDLog.sharedInstance.logLevel = .verbose
         
         // setup service configuration
         let serviceConfiguration = AWSServiceConfiguration(region: CognitoIdentityUserPoolRegion, credentialsProvider: nil)
@@ -58,7 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //AWSIoTCredentialsWithCognitoID
         let credentialProvider = AWSCognitoCredentialsProvider(regionType: AwsRegion, identityPoolId: CognitoIdentityPoolId)
         let configuration = AWSServiceConfiguration(region: AwsRegion, credentialsProvider: credentialProvider)
+        //AUTOBOTLambdaMicroserviceClient.registerClient(withConfiguration: configuration!, forKey: "USWest2AUTOBOTLambdaMicroserviceClient")
         AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        //APIGatewayCredentialWithCognitoID
+        
         
         
         return true
