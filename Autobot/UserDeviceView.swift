@@ -24,8 +24,6 @@ class UserDeviceView: UITableViewController {
     
     var needsToRefresh = false //cellのrefresh
     
-    var registeredDevices: [iotDevices] = [] //From iotDevices.swift, iotDevices[roomName, device, icon, storyboard]
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

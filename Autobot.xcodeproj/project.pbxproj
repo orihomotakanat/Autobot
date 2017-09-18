@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		364332801F661BEC00D7C588 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643327F1F661BEC00D7C588 /* Constants.swift */; };
 		3684CD881F6CB8E7005315BE /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */; };
-		3684CD8A1F6CBB31005315BE /* iotDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684CD891F6CBB31005315BE /* iotDevices.swift */; };
 		36912D251F6E5C13008FCBD5 /* DDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36912D241F6E5C13008FCBD5 /* DDBManager.swift */; };
-		36C79D021F6D76D6007FDAB9 /* temporaryConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C79D011F6D76D6007FDAB9 /* temporaryConstants.swift */; };
+		36912D2B1F6F979F008FCBD5 /* AUTOBOTLambdaMicroserviceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36912D2A1F6F979F008FCBD5 /* AUTOBOTLambdaMicroserviceClient.swift */; };
 		36C79D041F6D7AB5007FDAB9 /* cognitoCredentialsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C79D031F6D7AB5007FDAB9 /* cognitoCredentialsConstants.swift */; };
 		710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C752D1F5FC4AA008DA199 /* AppDelegate.swift */; };
 		710C75331F5FC4AA008DA199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710C75311F5FC4AA008DA199 /* Main.storyboard */; };
@@ -33,9 +32,9 @@
 /* Begin PBXFileReference section */
 		3643327F1F661BEC00D7C588 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
-		3684CD891F6CBB31005315BE /* iotDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iotDevices.swift; sourceTree = "<group>"; };
 		36912D241F6E5C13008FCBD5 /* DDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDBManager.swift; sourceTree = "<group>"; };
-		36C79D011F6D76D6007FDAB9 /* temporaryConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temporaryConstants.swift; sourceTree = "<group>"; };
+		36912D291F6F979F008FCBD5 /* AWSApiGatewayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSApiGatewayBridge.h; sourceTree = "<group>"; };
+		36912D2A1F6F979F008FCBD5 /* AUTOBOTLambdaMicroserviceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUTOBOTLambdaMicroserviceClient.swift; sourceTree = "<group>"; };
 		36C79D031F6D7AB5007FDAB9 /* cognitoCredentialsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cognitoCredentialsConstants.swift; sourceTree = "<group>"; };
 		710C752A1F5FC4AA008DA199 /* Autobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		710C752D1F5FC4AA008DA199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,10 +99,11 @@
 		710C752C1F5FC4AA008DA199 /* Autobot */ = {
 			isa = PBXGroup;
 			children = (
+				36912D291F6F979F008FCBD5 /* AWSApiGatewayBridge.h */,
+				36912D2A1F6F979F008FCBD5 /* AUTOBOTLambdaMicroserviceClient.swift */,
 				36912D241F6E5C13008FCBD5 /* DDBManager.swift */,
 				3643327F1F661BEC00D7C588 /* Constants.swift */,
 				36C79D031F6D7AB5007FDAB9 /* cognitoCredentialsConstants.swift */,
-				3684CD891F6CBB31005315BE /* iotDevices.swift */,
 				710C75431F60541F008DA199 /* Autobot-Bridging-Header.h */,
 				710C752D1F5FC4AA008DA199 /* AppDelegate.swift */,
 				711664A71F662587004D5B3F /* SingInView.swift */,
@@ -114,7 +114,6 @@
 				711664A91F66279F004D5B3F /* UserDeviceView.swift */,
 				3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */,
 				710C75311F5FC4AA008DA199 /* Main.storyboard */,
-				36C79D011F6D76D6007FDAB9 /* temporaryConstants.swift */,
 				710C75371F5FC4AA008DA199 /* Assets.xcassets */,
 				710C75391F5FC4AA008DA199 /* LaunchScreen.storyboard */,
 				710C753C1F5FC4AA008DA199 /* Info.plist */,
@@ -312,12 +311,11 @@
 				711664B81F6643A1004D5B3F /* RemoteControllerView.swift in Sources */,
 				711664B01F663497004D5B3F /* ForgotPasswordView.swift in Sources */,
 				3684CD881F6CB8E7005315BE /* AddDeviceViewController.swift in Sources */,
+				36912D2B1F6F979F008FCBD5 /* AUTOBOTLambdaMicroserviceClient.swift in Sources */,
 				711664B21F663B39004D5B3F /* ResetPasswordView.swift in Sources */,
-				3684CD8A1F6CBB31005315BE /* iotDevices.swift in Sources */,
 				710C752E1F5FC4AA008DA199 /* AppDelegate.swift in Sources */,
 				711664AE1F6630B7004D5B3F /* ConfirmView.swift in Sources */,
 				711664A81F662587004D5B3F /* SingInView.swift in Sources */,
-				36C79D021F6D76D6007FDAB9 /* temporaryConstants.swift in Sources */,
 				711664AC1F662E2F004D5B3F /* SignUpView.swift in Sources */,
 				364332801F661BEC00D7C588 /* Constants.swift in Sources */,
 			);

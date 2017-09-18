@@ -21,7 +21,7 @@ class RemoteControllerView: UIViewController {
     
     //AWSIoT
     var iotDataManager: AWSIoTDataManager!
-    let thingName = room
+    let thingName = "room"
     
     
     override func viewDidLoad() {

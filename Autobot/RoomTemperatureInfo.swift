@@ -14,7 +14,7 @@ import AWSAPIGateway
 
 class RoomTemperatureInfo: UIViewController {
     
-    //let serviceClient = AUTOBOTLambdaMicroserviceClient.default()
+    let serviceClient = AUTOBOTLambdaMicroserviceClient.default()
     
     override func viewDidLoad() {
         super.viewDidLoad()
