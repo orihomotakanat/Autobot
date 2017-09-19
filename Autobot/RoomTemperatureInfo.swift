@@ -16,8 +16,10 @@ import Charts
 
 class RoomTemperatureInfo: UIViewController {
     
+    @IBOutlet var currentTemperatureLabel: UILabel!
+    @IBOutlet var currentHumidityLabel: UILabel!
+    
     //APIGateway settings
-    //let serviceClient = AUTOBOTLambdaMicroserviceClient.client(forKey: "AUTOBOTLambdaMicroserviceClient")
     let serviceClient = AUTOBOTLambdaMicroserviceClient.default()
     
     //APIGateway - variables
@@ -87,8 +89,9 @@ class RoomTemperatureInfo: UIViewController {
     
     //invokeAPIGW - GETonly
     func invokeApiGw() {
-        //var tempHisArray: [Double] = [] //温度分布表示用の配列
-        var userDataPairs: [Int: Double] = [:] //時間と温度のペア
+        var timeStamps: [Int] = [] //all timeStamps of user data
+        var roomTemperatures: [Double] = [] //user all roomTemperature
+        var userDataPairs: [Int: Double] = [:] //add user data as Key-Value
         
         
         queryParameters.updateValue("IoTDeviceData", forKey: "TableName") //DynamoDB TableData
@@ -109,6 +112,7 @@ class RoomTemperatureInfo: UIViewController {
             let jsonDataCount = Int(userJsonData["Items"].count)
             let timeRange: Int = Int(self!.currentTime) - 86400 //timeRange: 1day
             
+            // - store data as Key-Value & arrange data in time range of 1day
             if jsonDataCount <= 1 {
                 print("Error")
             } else {
@@ -122,9 +126,53 @@ class RoomTemperatureInfo: UIViewController {
                 }
             }
             
+            // - Arrangement of timeStamp - roomTemperature pair
+            for (timeStamp, roomTemperature) in userDataPairs.sorted(by: {$0 < $1}) {
+                timeStamps.append(timeStamp)
+                roomTemperatures.append(roomTemperature)
+            }
+            
+            DispatchQueue.main.async {
+                self?.drawLineChart(xValArr: timeStamps, yValArr: roomTemperatures)
+            }
             
             return nil
         })
+    }
+    
+    //draw room temeprature history graph as LineChart
+    func drawLineChart(xValArr: [Int], yValArr: [Double]) {
+        var yValues : [ChartDataEntry] = [ChartDataEntry]()
+        
+        for i in 0 ..< xValArr.count {
+            let dataEntry = ChartDataEntry(x: Double(i), y: yValArr[i])
+            yValues.append(dataEntry)
+        }
+        
+        let data = LineChartData()
+        let dataSets = LineChartDataSet(values: yValues, label: "Dates")
+        
+        /** Graphs UI settings **/
+        // - Gradient inner of graph
+        let gradientColors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor, #colorLiteral(red: 0.2196078449, green: 1, blue: 0.8549019694, alpha: 1).withAlphaComponent(0.3).cgColor] as CFArray
+        let colorLocations:[CGFloat] = [0.7, 0.0]
+        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)
+        dataSets.fill = Fill.fillWithLinearGradient(gradient!, angle: 90.0)
+        
+        // - Line, Plot, Line-format etc...
+        dataSets.lineWidth = 3.0
+        dataSets.drawCirclesEnabled = false
+        dataSets.mode = .cubicBezier
+        dataSets.fillAlpha = 0.8 //Curve-line is not trasparent
+        dataSets.drawFilledEnabled = true //paint under curve-line
+        dataSets.drawValuesEnabled = false //Label of plot
+        dataSets.highlightColor = #colorLiteral(red: 0.476841867, green: 0.5048075914, blue: 1, alpha: 1) //x, y line when choosing plot
+        dataSets.colors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)] //Color of drawing graph
+        /** UP TO THIS POINT **/
+        
+        data.addDataSet(dataSets)
+        roomTemperatureView.animate(xAxisDuration: 1.2, yAxisDuration: 1.5, easingOption: .easeInOutElastic) //Animation settings when showed
+        self.roomTemperatureView.data = data
     }
 
     override func didReceiveMemoryWarning() {
