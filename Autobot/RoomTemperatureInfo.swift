@@ -14,8 +14,13 @@ import AWSAPIGateway
 import SwiftyJSON
 import Charts
 
+var timeStamps: [Int] = [] //all timeStamps of user data - 後にfunc invoke...の中に入れる
+
 class RoomTemperatureInfo: UIViewController {
     
+    //AWSIoT
+    let thingName = "your-thing-name" //thingName
+    var iotDataManager: AWSIoTDataManager!
     @IBOutlet var currentTemperatureLabel: UILabel!
     @IBOutlet var currentHumidityLabel: UILabel!
     
@@ -41,7 +46,7 @@ class RoomTemperatureInfo: UIViewController {
             roomTemperatureView.xAxis.axisLineColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) //x軸の色
             roomTemperatureView.xAxis.axisLineWidth = CGFloat(1) //x軸の太さ
             roomTemperatureView.xAxis.drawGridLinesEnabled = false //x軸のグリッド表示(今回は表示しない)
-            //roomTemperatureView.xAxis.valueFormatter = lineChartFormatter() //x軸の仕様
+            roomTemperatureView.xAxis.valueFormatter = lineChartFormatter() //x軸の仕様
             
             
             //Y-Axis
@@ -77,6 +82,8 @@ class RoomTemperatureInfo: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        iotDataManager = AWSIoTDataManager.default()
+        iotDataManager.connectUsingWebSocket(withClientId: UUID().uuidString, cleanSession: true, statusCallback: mqttEventCallback)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,12 +91,17 @@ class RoomTemperatureInfo: UIViewController {
         
         //Show temperature history graph
         invokeApiGw()
+        fetchCurrentData()
+        
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.currentTemperatureLabel.text = "load.."
+        self.currentHumidityLabel.text = "load.."
     }
     
     //invokeAPIGW - GETonly
     func invokeApiGw() {
-        var timeStamps: [Int] = [] //all timeStamps of user data
         var roomTemperatures: [Double] = [] //user all roomTemperature
         var userDataPairs: [Int: Double] = [:] //add user data as Key-Value
         
@@ -126,6 +138,7 @@ class RoomTemperatureInfo: UIViewController {
                 }
             }
             
+
             // - Arrangement of timeStamp - roomTemperature pair
             for (timeStamp, roomTemperature) in userDataPairs.sorted(by: {$0 < $1}) {
                 timeStamps.append(timeStamp)
@@ -173,6 +186,57 @@ class RoomTemperatureInfo: UIViewController {
         data.addDataSet(dataSets)
         roomTemperatureView.animate(xAxisDuration: 1.2, yAxisDuration: 1.5, easingOption: .easeInOutElastic) //Animation settings when showed
         self.roomTemperatureView.data = data
+    }
+    
+    //Fetch current room temperature and humidity and show under view
+    func fetchCurrentData() {
+        let subscribeTopic = "\(thingName)/current"
+        iotDataManager.subscribe(toTopic: subscribeTopic, qoS: .messageDeliveryAttemptedAtMostOnce, messageCallback: { (payload) in
+            //let stringValue = NSString(data: payload, encoding: String.Encoding.utf8.rawValue)!
+            let currentPayload = JSON(data: payload) //Subscribed payload
+            let currentTemperature = currentPayload["temp"].stringValue
+            let currentHumidity = currentPayload["humidity"].stringValue
+            
+            self.currentTemperatureLabel.text = currentTemperature
+            self.currentHumidityLabel.text = currentHumidity
+
+        })
+    }
+    
+    //MQTTcallback
+    func mqttEventCallback( _ status: AWSIoTMQTTStatus )
+    {
+        DispatchQueue.main.async {
+            print("connection status = \(status.rawValue)")
+            switch(status)
+            {
+            case .connecting:
+                print( "Connecting..." )
+                
+            case .connected:
+                print( "Connected" )
+                //
+                // Register the device shadows once connected.
+                //
+                self.iotDataManager.getShadow(self.thingName)
+                
+                
+            case .disconnected:
+                print( "Disconnected" )
+                
+            case .connectionRefused:
+                print( "Connection Refused" )
+                
+            case .connectionError:
+                print( "Connection Error" )
+                
+            case .protocolError:
+                print( "Protocol Error" )
+                
+            default:
+                print("unknown state: \(status.rawValue)")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

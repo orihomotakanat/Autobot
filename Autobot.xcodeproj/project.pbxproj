@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		364332801F661BEC00D7C588 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643327F1F661BEC00D7C588 /* Constants.swift */; };
+		368033781F70A1BF00F18DFB /* linechartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368033771F70A1BF00F18DFB /* linechartFormatter.swift */; };
 		3684CD881F6CB8E7005315BE /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */; };
 		36912D251F6E5C13008FCBD5 /* DDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36912D241F6E5C13008FCBD5 /* DDBManager.swift */; };
 		36912D2B1F6F979F008FCBD5 /* AUTOBOTLambdaMicroserviceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36912D2A1F6F979F008FCBD5 /* AUTOBOTLambdaMicroserviceClient.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		3643327F1F661BEC00D7C588 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		368033771F70A1BF00F18DFB /* linechartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = linechartFormatter.swift; sourceTree = "<group>"; };
 		3684CD871F6CB8E7005315BE /* AddDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
 		36912D241F6E5C13008FCBD5 /* DDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDBManager.swift; sourceTree = "<group>"; };
 		36912D291F6F979F008FCBD5 /* AWSApiGatewayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSApiGatewayBridge.h; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				711664BB1F664446004D5B3F /* aircon.storyboard */,
 				711664B71F6643A1004D5B3F /* RemoteControllerView.swift */,
 				711664B91F6643EB004D5B3F /* RoomTemperatureInfo.swift */,
+				368033771F70A1BF00F18DFB /* linechartFormatter.swift */,
 			);
 			name = RespberryPi3;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36912D251F6E5C13008FCBD5 /* DDBManager.swift in Sources */,
+				368033781F70A1BF00F18DFB /* linechartFormatter.swift in Sources */,
 				711664BA1F6643EB004D5B3F /* RoomTemperatureInfo.swift in Sources */,
 				711664AA1F66279F004D5B3F /* UserDeviceView.swift in Sources */,
 				36C79D041F6D7AB5007FDAB9 /* cognitoCredentialsConstants.swift in Sources */,
