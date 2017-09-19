@@ -59,7 +59,9 @@ class RemoteControllerView: UIViewController {
     //TurnningOn
     func turnedOn() {
         //処理
+        let publishTopic = "\(thingName)/control/on"
         print("Turn on")
+        iotDataManager.publishString("turn on", onTopic: publishTopic, qoS:.messageDeliveryAttemptedAtMostOnce)
         tapticGenerator.impactOccurred()
     }
     
@@ -80,7 +82,9 @@ class RemoteControllerView: UIViewController {
     //When pushing off button
     @IBAction func pushedOff(_ sender: Any) {
         //処理
+        let publishTopic = "\(thingName)/control/off"
         print("Turn off")
+        iotDataManager.publishString("turn on", onTopic: publishTopic, qoS:.messageDeliveryAttemptedAtMostOnce)
         tapticGenerator.impactOccurred()
     }
     

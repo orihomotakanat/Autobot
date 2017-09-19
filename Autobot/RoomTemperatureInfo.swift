@@ -19,7 +19,7 @@ var timeStamps: [Int] = [] //all timeStamps of user data - 後にfunc invoke...�
 class RoomTemperatureInfo: UIViewController {
     
     //AWSIoT
-    let thingName = "your-thing-name" //thingName
+    let thingName = "your-thing-name" //thingName "your-thing-name"
     var iotDataManager: AWSIoTDataManager!
     @IBOutlet var currentTemperatureLabel: UILabel!
     @IBOutlet var currentHumidityLabel: UILabel!
@@ -65,7 +65,7 @@ class RoomTemperatureInfo: UIViewController {
             //Others - UISettings
             roomTemperatureView.noDataFont = UIFont.systemFont(ofSize: 30) //Noデータ時の表示フォント
             roomTemperatureView.noDataTextColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) //Noデータ時の文字色
-            roomTemperatureView.noDataText = ""//"Keep Waiting" //Noデータ時に表示する文字 今回はインジケータで表示するのでなし
+            roomTemperatureView.noDataText = "Loading..."//"Keep Waiting" //Noデータ時に表示する文字 今回はインジケータで表示するのでなし
             roomTemperatureView.legend.enabled = false //"■ months"のlegendの表示
             roomTemperatureView.dragDecelerationEnabled = true //指を離してもスクロール続くか
             roomTemperatureView.dragDecelerationFrictionCoef = 0.6 //ドラッグ時の減速スピード(0-1)
@@ -91,7 +91,6 @@ class RoomTemperatureInfo: UIViewController {
         
         //Show temperature history graph
         invokeApiGw()
-        fetchCurrentData()
         timeStamps.removeAll() //timeStampはglobalVarialbeなため値が保持される。ここで配列を空にしておく。
     }
     
@@ -106,7 +105,7 @@ class RoomTemperatureInfo: UIViewController {
         var userDataPairs: [Int: Double] = [:] //add user data as Key-Value
         
         
-        queryParameters.updateValue("sampleFromIoT", forKey: "TableName") //DynamoDB TableData IoTDeviceData
+        queryParameters.updateValue("IoTDeviceData", forKey: "TableName") //DynamoDB TableData "IoTDeviceData", Test: "sampleFromIoT"
         let apiRequest = AWSAPIGatewayRequest(httpMethod: "GET", urlString: toLambdaPath, queryParameters: queryParameters, headerParameters: headerParameters, httpBody: nil)
         
         serviceClient.invoke(apiRequest).continueWith(block: {[weak self](task: AWSTask) -> AnyObject? in
@@ -193,11 +192,12 @@ class RoomTemperatureInfo: UIViewController {
     //Fetch current room temperature and humidity and show under view
     func fetchCurrentData() {
         let subscribeTopic = "\(thingName)/present"
+        print(subscribeTopic)
         iotDataManager.subscribe(toTopic: subscribeTopic, qoS: .messageDeliveryAttemptedAtMostOnce, messageCallback: { (payload) in
             //let stringValue = NSString(data: payload, encoding: String.Encoding.utf8.rawValue)!
             let currentPayload = JSON(data: payload) //Subscribed payload
-            let currentTemperature = currentPayload["temp"].stringValue
-            let currentHumidity = currentPayload["humidity"].stringValue
+            let currentTemperature = currentPayload["currentTemperature"].stringValue
+            let currentHumidity = currentPayload["currentHumidity"].stringValue
             
             self.currentTemperatureLabel.text = currentTemperature
             self.currentHumidityLabel.text = currentHumidity
@@ -221,7 +221,7 @@ class RoomTemperatureInfo: UIViewController {
                 // Register the device shadows once connected.
                 //
                 self.iotDataManager.getShadow(self.thingName)
-                
+                self.fetchCurrentData()
                 
             case .disconnected:
                 print( "Disconnected" )
