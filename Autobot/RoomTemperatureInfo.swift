@@ -92,7 +92,7 @@ class RoomTemperatureInfo: UIViewController {
         //Show temperature history graph
         invokeApiGw()
         fetchCurrentData()
-        
+        timeStamps.removeAll() //timeStampはglobalVarialbeなため値が保持される。ここで配列を空にしておく。
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,7 +106,7 @@ class RoomTemperatureInfo: UIViewController {
         var userDataPairs: [Int: Double] = [:] //add user data as Key-Value
         
         
-        queryParameters.updateValue("IoTDeviceData", forKey: "TableName") //DynamoDB TableData
+        queryParameters.updateValue("sampleFromIoT", forKey: "TableName") //DynamoDB TableData IoTDeviceData
         let apiRequest = AWSAPIGatewayRequest(httpMethod: "GET", urlString: toLambdaPath, queryParameters: queryParameters, headerParameters: headerParameters, httpBody: nil)
         
         serviceClient.invoke(apiRequest).continueWith(block: {[weak self](task: AWSTask) -> AnyObject? in
@@ -124,6 +124,7 @@ class RoomTemperatureInfo: UIViewController {
             let jsonDataCount = Int(userJsonData["Items"].count)
             let timeRange: Int = Int(self!.currentTime) - 86400 //timeRange: 1day
             
+            
             // - store data as Key-Value & arrange data in time range of 1day
             if jsonDataCount <= 1 {
                 print("Error")
@@ -131,7 +132,7 @@ class RoomTemperatureInfo: UIViewController {
                 for countNumber in 0...jsonDataCount-1 {
                     //if 1day前以外のデータはappendしない様に設定する curretUnixTime - unixtimeFromDynamo <= 3day
                     if userJsonData["Items"][countNumber]["timeStamp"].intValue >= timeRange {
-                        let timeStamp = userJsonData["Items"][countNumber]["time"].intValue //timeStamp
+                        let timeStamp = userJsonData["Items"][countNumber]["timeStamp"].intValue //timeStamp
                         let roomTemperature = userJsonData["Items"][countNumber]["data"]["roomTemperature"].doubleValue //roomTemperature
                         userDataPairs[timeStamp] = roomTemperature //key-value式で各時間に対する温度を格納
                     }
@@ -186,11 +187,12 @@ class RoomTemperatureInfo: UIViewController {
         data.addDataSet(dataSets)
         roomTemperatureView.animate(xAxisDuration: 1.2, yAxisDuration: 1.5, easingOption: .easeInOutElastic) //Animation settings when showed
         self.roomTemperatureView.data = data
+        
     }
     
     //Fetch current room temperature and humidity and show under view
     func fetchCurrentData() {
-        let subscribeTopic = "\(thingName)/current"
+        let subscribeTopic = "\(thingName)/present"
         iotDataManager.subscribe(toTopic: subscribeTopic, qoS: .messageDeliveryAttemptedAtMostOnce, messageCallback: { (payload) in
             //let stringValue = NSString(data: payload, encoding: String.Encoding.utf8.rawValue)!
             let currentPayload = JSON(data: payload) //Subscribed payload
