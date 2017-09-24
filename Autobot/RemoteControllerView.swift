@@ -25,6 +25,10 @@ class RemoteControllerView: UIViewController {
     //AWSIoT
     var iotDataManager: AWSIoTDataManager!
     
+    //DeviceStatus
+    @IBOutlet var deviceStatus: UILabel!
+    
+    
     //Timer
     @IBOutlet var Hour: UILabel!
     @IBOutlet var Minute: UILabel!
@@ -58,7 +62,6 @@ class RemoteControllerView: UIViewController {
                 
         // Do any additional setup after loading the view.
         reservedTimerPicker.setValue(UIColor.white, forKey: "textColor")
-        reservedTimerPicker.backgroundColor = #colorLiteral(red: 0.001564681064, green: 0.05989853293, blue: 0.1638002098, alpha: 1)
         //IndexPath
     }
 
@@ -199,16 +202,20 @@ class RemoteControllerView: UIViewController {
             {
             case .connecting:
                 print( "Connecting..." )
+                self.deviceStatus.text = "Connecting..."
                 
             case .connected:
                 print( "Connected" )
+                self.deviceStatus.text = "Connected"
                 //
                 // Register the device shadows once connected.
                 //
                 self.iotDataManager.getShadow(self.thingName)
                 
+                
             case .disconnected:
                 print( "Disconnected" )
+                self.deviceStatus.text = "Disconnected"
                 
             case .connectionRefused:
                 print( "Connection Refused" )

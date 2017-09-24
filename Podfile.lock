@@ -12,9 +12,9 @@ PODS:
     - AWSCore (= 2.6.1)
   - AWSLambda (2.6.1):
     - AWSCore (= 2.6.1)
-  - Charts (3.0.2):
-    - Charts/Core (= 3.0.2)
-  - Charts/Core (3.0.2)
+  - Charts (3.0.3):
+    - Charts/Core (= 3.0.3)
+  - Charts/Core (3.0.3)
   - KRActivityIndicatorView (2.0.2)
   - KRProgressHUD (3.0.0):
     - KRActivityIndicatorView (~> 2.0.2)
@@ -44,7 +44,7 @@ SPEC CHECKSUMS:
   AWSDynamoDB: e873d66ccd547efad9a7e266b8803659a53e0ac9
   AWSIoT: b070b7f3967314f58e5c349f383b9f533f63c67a
   AWSLambda: 044446e6a9310379a10939fb4e151b2b4a9fe5e6
-  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
+  Charts: bcde37724c161958c1438dd4883971fcb2d50c06
   KRActivityIndicatorView: 2a9d5442ba8da6274db3afdf46aeaef7cf6dd8ad
   KRProgressHUD: 14f9fad06080bdb1e59569104a8eda654c83e813
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
